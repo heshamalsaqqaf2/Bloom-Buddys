@@ -1,6 +1,7 @@
 import 'package:bloom_buddys/common/color_extension.dart';
 import 'package:bloom_buddys/common/extension.dart';
 import 'package:bloom_buddys/common_widget/link_button.dart';
+import 'package:bloom_buddys/screen/explore_diagnosis.dart';
 import 'package:bloom_buddys/screen/my_plants.dart';
 import '../common_widget/round_textfield.dart';
 import 'package:flutter/material.dart';
@@ -58,160 +59,167 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Column(
-              children: [
-                const SizedBox(height: 25),
-                RoundTextField(
-                  hintText: "...إبحث عن أي شي",
-                  keyboardType: TextInputType.text,
-                  right: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.search,
-                      color: TColor.primary,
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Column(
+                children: [
+                  const SizedBox(height: 25),
+                  RoundTextField(
+                    hintText: "...إبحث عن أي شي",
+                    keyboardType: TextInputType.text,
+                    right: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.search,
+                        color: TColor.primary,
+                      ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      LinkButton(
-                        title: "عرض الكل",
-                        txtColor: TColor.primary,
-                        onPressed: () {
-                          context.push(const MyPlants());
-                        },
-                      ),
-                      Text(
-                        "خططي",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'Almarai',
-                          color: TColor.secondaryText,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        LinkButton(
+                          title: "عرض الكل",
+                          txtColor: TColor.primary,
+                          onPressed: () {
+                            context.push(const MyPlants());
+                          },
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: imageDataList.map((imageData) {
-                    return Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Image.asset(imageData.imagePath),
-                          const SizedBox(height: 8.0),
-                          Text(imageData.name),
-                        ],
-                      ),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      LinkButton(
-                        title: "عرض الكل",
-                        onPressed: showCustomDialog,
-                        txtColor: TColor.primary,
-                      ),
-                      Text(
-                        "نصائح",
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'Almarai',
-                          color: TColor.secondaryText,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  color: TColor.secondary,
-                  child: Column(
-                    children: [
-                      const ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          topLeft: Radius.circular(20),
-                        ),
-                      ),
-                      ListTile(
-                        title: Text(
-                          'الوقت الفغلي للعملية المطلوية',
-                          textAlign: TextAlign.right,
+                        Text(
+                          "خططي",
                           style: TextStyle(
-                            color: TColor.primaryText,
-                          ),
-                        ),
-                        subtitle: Text(
-                          '6:00 - 9:00 AM',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: 'Almarai',
                             color: TColor.secondaryText,
                           ),
                         ),
-                      ),
-                      const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 5),
-                Card(
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  color: TColor.secondary,
-                  child: Column(
-                    children: [
-                      const ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          topLeft: Radius.circular(20),
-                        ),
-                      ),
-                      ListTile(
-                        title: Text(
-                          'الوقت الفغلي للعملية المطلوية',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            color: TColor.primaryText,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: imageDataList.map((imageData) {
+                      return Container(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: () {
+                            context.push(const ExploreDiagnosis());
+                          },
+                          child: Column(
+                            children: [
+                              Image.asset(imageData.imagePath),
+                              const SizedBox(height: 8.0),
+                              Text(imageData.name),
+                            ],
                           ),
                         ),
-                        subtitle: Text(
-                          '6:00 - 9:00 AM',
-                          textAlign: TextAlign.right,
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        LinkButton(
+                          title: "عرض الكل",
+                          onPressed: showCustomDialog,
+                          txtColor: TColor.primary,
+                        ),
+                        Text(
+                          "نصائح",
                           style: TextStyle(
+                            fontSize: 15,
+                            fontFamily: 'Almarai',
                             color: TColor.secondaryText,
                           ),
                         ),
-                      ),
-                      const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 2),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  Card(
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    color: TColor.secondary,
+                    child: Column(
+                      children: [
+                        const ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            topLeft: Radius.circular(20),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            'الوقت الفغلي للعملية المطلوية',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              color: TColor.primaryText,
+                            ),
+                          ),
+                          subtitle: Text(
+                            '6:00 - 9:00 AM',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              color: TColor.secondaryText,
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Card(
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    color: TColor.secondary,
+                    child: Column(
+                      children: [
+                        const ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            topLeft: Radius.circular(20),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            'الوقت الفغلي للعملية المطلوية',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              color: TColor.primaryText,
+                            ),
+                          ),
+                          subtitle: Text(
+                            '6:00 - 9:00 AM',
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              color: TColor.secondaryText,
+                            ),
+                          ),
+                        ),
+                        const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -170,17 +170,48 @@ class _UsersInformationsState extends State<UsersInformations> {
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
                 child: DropdownButton<String>(
-                    items: _locations.map((String val) {
-                      return DropdownMenuItem<String>(
-                        value: val,
-                        child: Text(val),
-                      );
-                    }).toList(),
-                    hint: const Text("تحديد نوع الإشتراك الحالي في الباقة"),
-                    onChanged: (newVal) {
-                      setState(() {});
-                    }),
+                  items: _locations.map((String val) {
+                    return DropdownMenuItem<String>(
+                      value: val,
+                      child: Text(val),
+                    );
+                  }).toList(),
+                  hint: const Text("تحديد نوع الإشتراك الحالي في الباقة"),
+                  onChanged: (newVal) {
+                    setState(() {});
+                  },
+                ),
               ),
+              const SizedBox(height: 15),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      overlayColor: MaterialStateColor.resolveWith(
+                          (states) => TColor.secondary),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          side: BorderSide(
+                            color: TColor.secondary,
+                          ),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'تغير الإشتراك',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: TColor.primaryText,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 15),
             ],
           ),
         ),

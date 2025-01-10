@@ -30,65 +30,68 @@ class _MyPlantsState extends State<MyPlants> {
             elevation: 0,
             backgroundColor: TColor.secondary,
             actions: [
-              IconButton(
-                onPressed: () {
-                  context.pop();
-                },
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: TColor.primary,
-                ),
-              ),
               Padding(
-                padding: const EdgeInsets.only(
-                    right: 8, left: 0, bottom: 18, top: 18),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
                 child: Text(
                   "خططي",
                   style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Almarai',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
                     color: TColor.primaryText,
                   ),
                 ),
               ),
             ],
-            leading: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Image.asset(
-                "assets/images/Ellipse 1.png",
-                fit: BoxFit.cover,
+            leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: TColor.primaryText,
               ),
+              onPressed: () => context.pop(),
             ),
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Column(
-              children: [
-                const SizedBox(height: 20),
-                RoundTextField(
-                  hintText: "...إبحث عن أي شي",
-                  keyboardType: TextInputType.text,
-                  right: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.search,
-                      color: TColor.primary,
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Column(
+                children: [
+                  const SizedBox(height: 20),
+                  RoundTextField(
+                    hintText: "...إبحث عن أي شي",
+                    keyboardType: TextInputType.text,
+                    right: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.search,
+                        color: TColor.primary,
+                      ),
                     ),
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                ),
-                const PlantCard(
-                  imageUrl: 'assets/images/Rectangle 8.png',
-                  title: 'الخطة رقم 1 في الحساب',
-                ),
-                const SizedBox(height: 16),
-                const PlantCard(
-                  imageUrl: 'assets/images/Rectangle 9.png',
-                  title: 'الخطة رقم 2 في الحساب',
-                ),
-              ],
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  ),
+                  const PlantCard(
+                    imageUrl: 'assets/images/Rectangle 8.png',
+                    title: 'الخطة رقم 1 في الحساب',
+                  ),
+                  const SizedBox(height: 16),
+                  const PlantCard(
+                    imageUrl: 'assets/images/Rectangle 9.png',
+                    title: 'الخطة رقم 2 في الحساب',
+                  ),
+                  const SizedBox(height: 16),
+                  const PlantCard(
+                    imageUrl: 'assets/images/Rectangle 9.png',
+                    title: 'الخطة رقم 2 في الحساب',
+                  ),
+                  const SizedBox(height: 16),
+                  const PlantCard(
+                    imageUrl: 'assets/images/Rectangle 9.png',
+                    title: 'الخطة رقم 2 في الحساب',
+                  ),
+                ],
+              ),
             ),
           ),
         ),

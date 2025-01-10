@@ -43,23 +43,7 @@ class _SettingsState extends State<Settings> {
         leading: Padding(
           padding: const EdgeInsets.all(0),
           child: IconButton(
-            onPressed: () {
-              AwesomeDialog(
-                context: context,
-                dialogType: DialogType.error,
-                headerAnimationLoop: false,
-                animType: AnimType.bottomSlide,
-                btnCancelText: "إلغاء",
-                btnOkText: "موافق",
-                title: 'خطأ',
-                desc:
-                    'إما أن النموذج لا يدعم الكائنات أو النباتات في الصورة أو أن الصورة غير واضحة.',
-                buttonsTextStyle: const TextStyle(color: Colors.black),
-                showCloseIcon: true,
-                btnCancelOnPress: () {},
-                btnOkOnPress: () {},
-              ).show();
-            },
+            onPressed: () {},
             icon: Image.asset(
               "assets/images/Ellipse 1.png",
               fit: BoxFit.cover,
@@ -391,8 +375,7 @@ class _SettingsState extends State<Settings> {
                           btnCancelText: "إلغاء",
                           btnOkText: "موافق",
                           title: 'تسجيل الخروج',
-                          desc:
-                              'هل أنت متأكد من تسجيل خروجك',
+                          desc: 'هل أنت متأكد من تسجيل خروجك',
                           buttonsTextStyle:
                               const TextStyle(color: Colors.black),
                           showCloseIcon: true,
