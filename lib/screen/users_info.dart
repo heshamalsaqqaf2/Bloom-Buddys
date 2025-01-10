@@ -1,7 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison
-
-import 'dart:ffi';
-
 import 'package:bloom_buddys/common/extension.dart';
 import 'package:bloom_buddys/common_widget/round_button.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +18,7 @@ class _UsersInformationsState extends State<UsersInformations> {
   TextEditingController txtPassword = TextEditingController();
   TextEditingController txtConfirmPassword = TextEditingController();
 
-  String _selectedLocation = 'الإشتراك الحالي';
-  List<String> _locations = ['مجاني', 'بلا حدود'];
+  final List<String> _locations = ['مجاني', 'بلا حدود'];
 
   @override
   Widget build(BuildContext context) {
@@ -183,7 +178,6 @@ class _UsersInformationsState extends State<UsersInformations> {
                     }).toList(),
                     hint: const Text("تحديد نوع الإشتراك الحالي في الباقة"),
                     onChanged: (newVal) {
-                      _selectedLocation = newVal as String;
                       setState(() {});
                     }),
               ),
