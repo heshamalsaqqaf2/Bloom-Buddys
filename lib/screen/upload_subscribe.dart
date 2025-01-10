@@ -54,6 +54,7 @@ class _UploadSubscribeState extends State<UploadSubscribe> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 44),
               const Text(
                 "الإشتراك",
                 style: TextStyle(
@@ -88,7 +89,7 @@ class _UploadSubscribeState extends State<UploadSubscribe> {
                                 ),
                               )
                             : Image.file(
-                                fit: BoxFit.contain,
+                                fit: BoxFit.cover,
                                 height: 230,
                                 width: double.infinity,
                                 File(_image!.path),
@@ -101,17 +102,17 @@ class _UploadSubscribeState extends State<UploadSubscribe> {
               const SizedBox(height: 24),
               _buildTextField(
                 icon: Icons.person,
-                hintText: "Personal Name",
+                hintText: "الإسم الشخصي",
               ),
               const SizedBox(height: 16),
               _buildTextField(
                 icon: Icons.phone,
-                hintText: "Phone Number",
+                hintText: "رقم الهاتف",
               ),
               const SizedBox(height: 16),
               _buildTextField(
                 icon: Icons.calendar_today,
-                hintText: "Date of Birth",
+                hintText: "تاريخ الميلاد",
               ),
               const SizedBox(height: 32),
               ElevatedButton(
@@ -144,25 +145,29 @@ class _UploadSubscribeState extends State<UploadSubscribe> {
   }
 
   Widget _buildTextField({required IconData icon, required String hintText}) {
-    return TextField(
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: Colors.grey),
-        hintText: hintText,
-        hintStyle: const TextStyle(color: Colors.grey),
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(vertical: 16),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.grey.shade300),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.grey.shade300),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Colors.blue),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: TextField(
+        decoration: InputDecoration(
+          suffixIcon: Icon(icon, color: TColor.secondary),
+          hintText: hintText,
+          hintStyle: const TextStyle(color: Colors.grey),
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: Colors.grey.shade300),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: Colors.grey.shade300),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color: TColor.secondary),
+          ),
         ),
       ),
     );
