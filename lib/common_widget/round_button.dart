@@ -36,9 +36,9 @@ class RoundButton extends StatelessWidget {
         width: width,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: type == RoundButtonType.primary
+          color: type == RoundButtonType.secondary
               ? TColor.primary
-              : type == RoundButtonType.secondary
+              : type == RoundButtonType.primary
                   ? TColor.secondary
                   : Colors.transparent,
           border: type == RoundButtonType.line
@@ -53,7 +53,7 @@ class RoundButton extends StatelessWidget {
           style: TextStyle(
               color: type == RoundButtonType.line
                   ? (lineColor ?? TColor.primaryText)
-                  : Colors.white,
+                  : TColor.primaryText,
               fontSize: fontSize,
               fontFamily: 'Almarai',
               fontWeight: fontWeight),
